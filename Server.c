@@ -87,6 +87,11 @@ int main(int argc, char **argv)
 	for(i=0;i<WORKERS_NUM;i++){
 		write(connfd[i], END_MSG, 5);
 	}
+	
+	for(i=0;i<WORKERS_NUM;i++)
+	{
+		pthread_cancel(thread[i]);
+	}
 
 	close(sockfd);
 
